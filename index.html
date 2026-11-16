@@ -465,6 +465,73 @@
     }
 
     /* 3-Phase Timeline Infographic */
+    .roadmap-track-bar {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      align-items: center;
+      background: #FFFFFF;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 0.9rem 1.4rem;
+      margin-bottom: 2rem;
+      box-shadow: var(--shadow-sm);
+      gap: 1rem;
+    }
+
+    .roadmap-phase-node {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+    }
+
+    .roadmap-node-dot {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 0.95rem;
+      flex-shrink: 0;
+    }
+
+    .phase-1-dot { background: #FEF3C7; color: #B45309; border: 2px solid #FCD34D; }
+    .phase-2-dot { background: #D1FAE5; color: #047857; border: 2px solid #6EE7B7; }
+    .phase-3-dot { background: #DBEAFE; color: #1E40AF; border: 2px solid #93C5FD; }
+
+    .roadmap-node-info strong {
+      display: block;
+      font-size: 0.92rem;
+      color: var(--primary);
+      font-weight: 800;
+    }
+
+    .roadmap-node-info small {
+      font-size: 0.78rem;
+      color: var(--text-light);
+      display: block;
+      margin-top: 2px;
+    }
+
+    .roadmap-connector {
+      color: #CBD5E1;
+      font-size: 1.25rem;
+      font-weight: 800;
+      text-align: center;
+      user-select: none;
+    }
+
+    @media (max-width: 900px) {
+      .roadmap-track-bar {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .roadmap-connector {
+        display: none;
+      }
+    }
+
     .phases-container {
       display: grid;
       grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -968,8 +1035,35 @@
       <div class="section-kicker">Program Roadmap</div>
       <h2 class="section-title">8-Stage Program Journey from Application to Final Gala</h2>
       <p class="section-desc">
-        A structured, three-phase visual roadmap guiding selected teams from initial idea to university gala defense.
+        A structured, three-phase visual infographic roadmap guiding selected teams from initial idea to university gala defense.
       </p>
+    </div>
+
+    <!-- 3-Phase Macro Track Bar -->
+    <div class="roadmap-track-bar">
+      <div class="roadmap-phase-node">
+        <span class="roadmap-node-dot phase-1-dot">1</span>
+        <div class="roadmap-node-info">
+          <strong>PHASE 01: Entry & Selection</strong>
+          <small>Sep – Dec 2026 • Ideation & 1st Funding</small>
+        </div>
+      </div>
+      <div class="roadmap-connector">➔</div>
+      <div class="roadmap-phase-node">
+        <span class="roadmap-node-dot phase-2-dot">2</span>
+        <div class="roadmap-node-info">
+          <strong>PHASE 02: Deep Incubation</strong>
+          <small>Jan – May 2027 • Prototyping & Mentorship</small>
+        </div>
+      </div>
+      <div class="roadmap-connector">➔</div>
+      <div class="roadmap-phase-node">
+        <span class="roadmap-node-dot phase-3-dot">3</span>
+        <div class="roadmap-node-info">
+          <strong>PHASE 03: Harvest & Awards</strong>
+          <small>Jun – Sep 2027 • Final Pitch & Grand Gala</small>
+        </div>
+      </div>
     </div>
 
     <div class="phases-container">
@@ -978,12 +1072,12 @@
         <div>
           <div class="phase-head">
             <h3>Phase 1: Entry & Selection</h3>
-            <span class="badge badge-amber">Nov – Dec</span>
+            <span class="badge badge-amber">Nov – Dec 2026</span>
           </div>
 
           <div class="milestone-item highlight">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 01</span>
+              <span class="milestone-tag">🚀 STAGE 01</span>
               <span class="badge badge-amber">Sep 21 – Nov 30</span>
             </div>
             <div class="milestone-title">Open Application (報名收件)</div>
@@ -992,7 +1086,7 @@
 
           <div class="milestone-item">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 02</span>
+              <span class="milestone-tag">🔍 STAGE 02</span>
               <span class="badge badge-gray">Oct 27</span>
             </div>
             <div class="milestone-title">Problem Discovery Workshop</div>
@@ -1001,7 +1095,7 @@
 
           <div class="milestone-item highlight">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 03</span>
+              <span class="milestone-tag">🎯 STAGE 03</span>
               <span class="badge badge-teal">December</span>
             </div>
             <div class="milestone-title">Preliminary Selection (初選公佈)</div>
@@ -1009,7 +1103,7 @@
           </div>
         </div>
 
-        <div style="background: #FFFBEB; border: 1px solid #FCD34D; border-radius: 4px; padding: 6px 10px; font-size: 0.85rem; font-weight: 700; color: #92400E; text-align: center; margin-top: 1rem;">
+        <div style="background: #FFFBEB; border: 1px solid #FCD34D; border-radius: 4px; padding: 7px 10px; font-size: 0.85rem; font-weight: 700; color: #92400E; text-align: center; margin-top: 1rem;">
           💰 Phase 1 Funding Disbursed: NT$ 5K (Track A) / NT$ 10K (Track B)
         </div>
       </div>
@@ -1019,12 +1113,12 @@
         <div>
           <div class="phase-head">
             <h3>Phase 2: Deep Incubation</h3>
-            <span class="badge badge-teal">Jan – May</span>
+            <span class="badge badge-teal">Jan – May 2027</span>
           </div>
 
           <div class="milestone-item">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 04</span>
+              <span class="milestone-tag">🩺 STAGE 04</span>
               <span class="badge badge-gray">Dec – Jan</span>
             </div>
             <div class="milestone-title">Diagnostic Workshop & Advisory 1</div>
@@ -1033,7 +1127,7 @@
 
           <div class="milestone-item">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 05</span>
+              <span class="milestone-tag">🧪 STAGE 05</span>
               <span class="badge badge-gray">Feb – Mar</span>
             </div>
             <div class="milestone-title">Prototype Showcase & Advisory 2</div>
@@ -1042,7 +1136,7 @@
 
           <div class="milestone-item highlight">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 06</span>
+              <span class="milestone-tag">⚡ STAGE 06</span>
               <span class="badge badge-teal">Apr – May</span>
             </div>
             <div class="milestone-title">Enhancement Workshop</div>
@@ -1050,7 +1144,7 @@
           </div>
         </div>
 
-        <div style="background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 4px; padding: 6px 10px; font-size: 0.85rem; font-weight: 700; color: #065F46; text-align: center; margin-top: 1rem;">
+        <div style="background: #F0FDF4; border: 1px solid #86EFAC; border-radius: 4px; padding: 7px 10px; font-size: 0.85rem; font-weight: 700; color: #065F46; text-align: center; margin-top: 1rem;">
           💰 Phase 2 Funding Disbursed: NT$ 10K (Track A) / NT$ 20K (Track B)
         </div>
       </div>
@@ -1060,12 +1154,12 @@
         <div>
           <div class="phase-head">
             <h3>Phase 3: Harvest & Awards</h3>
-            <span class="badge badge-blue">Jun – Sep</span>
+            <span class="badge badge-blue">Jun – Sep 2027</span>
           </div>
 
           <div class="milestone-item">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 07</span>
+              <span class="milestone-tag">🎙️ STAGE 07</span>
               <span class="badge badge-gray">June</span>
             </div>
             <div class="milestone-title">Proposal Logic & Pitch Skills</div>
@@ -1074,7 +1168,7 @@
 
           <div class="milestone-item highlight" style="background: #EFF6FF; border-color: #93C5FD;">
             <div class="milestone-header">
-              <span class="milestone-tag">STAGE 08</span>
+              <span class="milestone-tag">🏆 STAGE 08</span>
               <span class="badge badge-blue">September</span>
             </div>
             <div class="milestone-title">Final Gala & Awards (決選大會)</div>
@@ -1082,10 +1176,21 @@
           </div>
         </div>
 
-        <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 4px; padding: 6px 10px; font-size: 0.85rem; font-weight: 700; color: #1E40AF; text-align: center; margin-top: 1rem;">
+        <div style="background: #EFF6FF; border: 1px solid #93C5FD; border-radius: 4px; padding: 7px 10px; font-size: 0.85rem; font-weight: 700; color: #1E40AF; text-align: center; margin-top: 1rem;">
           🏆 Cash Prizes Up to NT$ 50,000 + Honors
         </div>
       </div>
+    </div>
+
+    <!-- Infographic Progression Banner -->
+    <div style="background: #F8FAFC; border: 1px solid var(--border); border-radius: 8px; padding: 0.9rem 1.25rem; font-size: 0.9rem; color: #334155; margin-top: 1.5rem; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 0.75rem;">
+      <div>
+        <strong style="color: var(--primary);">💡 Roadmap Progression:</strong>
+        <span style="color: #475569;">No finished proof needed at signup ➔ NT$ 15K–30K direct funding ➔ 1-on-1 industry mentorship ➔ Up to NT$ 50K cash & university honors.</span>
+      </div>
+      <a href="https://ithu.tw/THUIMPACTAWARD" target="_blank" class="badge badge-amber" style="text-decoration: none; font-size: 0.85rem; padding: 0.4rem 0.85rem;">
+        Apply by Nov 30 (12:00 PM) ➔
+      </a>
     </div>
   </section>
 
