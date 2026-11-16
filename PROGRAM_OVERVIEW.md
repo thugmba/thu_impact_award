@@ -35,57 +35,69 @@ The **THU IMPACT AWARD** program structure is built upon four interconnected pil
 
 ---
 
-## 2. Pillar 01: Three Action Themes (三大行動主軸)
+## 2. Pillar 01: Three Action Themes (三大行動主軸 원문 및 정밀 번역)
 
-Participants are encouraged to ground their proposals in real-world campus or community issues and propose solutions within one of the following three domains:
+참가팀은 캠퍼스 및 일상생활의 실제 문제에서 출발하여 다음 3대 지속가능성 행동 주축 중 하나를 선택하여 제안서를 작성합니다:
 
-### Theme 01: Green Coexistence (綠色共生)
-*“Toward a Nature-Positive, Sustainable Future”*
+---
 
-* **Description**: Facing climate change, biodiversity loss, and resource depletion, this theme encourages starting from the campus and everyday living environments to rethink relationships between humans and nature, production, and consumption, developing initiatives that balance ecological conservation, resource sustainability, and quality of life.
-* **Key Focus Issues**:
-  * Climate action, energy conservation, carbon reduction, and net-zero transition
-  * Biodiversity, habitat conservation, and environmental education
-  * Water resources, clean energy, and environmental governance
-  * Circular economy, plastic reduction, and waste repurposing
-  * Low-carbon mobility, sustainable food systems, and green lifestyles
-* **Illustrative Proposal Ideas**:
-  * Revitalizing underutilized campus spaces into dual ecological-educational zones
-  * Developing campus plastic reduction, food waste upcycling, or circular resource systems
-  * Applying behavioral design to lower energy use across classrooms, dormitories, or offices
-  * Establishing citizen-science mechanisms for campus biodiversity surveys and recording
+### Theme 01: 綠色共生 (Green Coexistence / 녹색 공생)
+> **부제**: 邁向自然共好的永續未來 (*“자연과 함께 번영하는 지속가능한 미래를 향하여”*)
 
-### Theme 02: Inclusive Future (共融未來)
-*“Building a Diverse and Inclusive Society”*
+* **공식 정의 (Description)**:
+  * **원문**: 面對氣候變遷、生物多樣性流失與資源耗用等挑戰，本主軸鼓勵從校園與生活場域出發，重新思考人與自然、生產與消費之間的關係，發展兼顧環境保護、資源永續與生活品質的行動。
+  * **국문 정밀 번역**: 기후변화, 생물다양성 손실, 자원 고갈 등의 도전에 직면하여, 본 주축은 캠퍼스와 일상 생활 현장에서 출발해 인간과 자연, 생산과 소비 간의 관계를 재사고하고, 환경 보호와 자원 지속가능성, 삶의 질을 함께 고려하는 실천적 행동을 발전시키도록 독려합니다.
+* **핵심 초점 이슈 5개 (Key Focus Issues)**:
+  1. **氣候行動、節能減碳與淨零轉型**: 기후 행동, 에너지 절약 및 탄소 감축, 넷제로(Net-Zero) 전환
+  2. **生物多樣性、棲地保育與自然教育**: 생물다양성, 서식지 보전 및 자연 교육
+  3. **水資源、能源與環境管理**: 수자원, 에너지 및 환경 관리
+  4. **循環經濟、減塑及廢棄物再利用**: 순환 경제, 플라스틱 감축 및 폐기물 재활용
+  5. **低碳交通、永續飲食與綠色生活**: 저탄소 교통, 지속가능한 먹거리(식생활) 및 그린 라이프스타일
+* **실행 예시 4개 (Illustrative Action Examples)**:
+  1. **改善校園閒置空間，建置兼具生態與教育功能的場域**: 캠퍼스 유휴 공간을 개선하여 생태 보전과 교육 기능을 겸비한 장소 구축
+  2. **設計校園減塑、剩食再利用或資源循環方案**: 교내 플라스틱 감축, 잔반/음식물 폐기물 업사이클링 또는 자원 순환 방안 설계
+  3. **透過行為設計降低教室、宿舍或辦公空間能源使用**: 넛지(Nudge) 등 행동 디자인을 통해 강의실, 기숙사, 행정 사무 공간의 에너지 소비 감축
+  4. **建立校園生物多樣性調查、紀錄或公民參與機制**: 교내 생물다양성 조사, 생태 아카이빙 및 시민과학 참여 메커니즘 구축
 
-* **Description**: Recognizing that every individual possesses unique backgrounds, abilities, and needs, this theme addresses structural barriers in education, daily life, and civic participation. It fosters service innovation, institutional improvement, and cross-group partnerships to build an equitable, welcoming, and empathetic environment.
-* **Key Focus Issues**:
-  * Educational equity, learning support, and resource accessibility
-  * Disability inclusion, barrier-free access, and friendly physical/digital environments
-  * Support for elderly populations, youth, underprivileged families, and marginalized groups
-  * Mental health, emotional well-being, and social connectedness
-  * Gender equality, multicultural diversity, and intergenerational co-creation
-* **Illustrative Proposal Ideas**:
-  * Redesigning curriculum materials, digital information, or campus services for diverse learning needs
-  * Implementing community-support initiatives for seniors, children, or disadvantaged groups
-  * Building peer mental health support and social connection networks on campus
-  * Hosting intergenerational and cross-cultural initiatives that dismantle stereotypes and foster mutual understanding
+---
 
-### Theme 03: Smart Innovation (智慧創新)
-*“Tech-Driven Sustainable Transformation”*
+### Theme 02: 共融未來 (Inclusive Future / 포용적 미래)
+> **부제**: 打造多元包容的社會 (*“다양성과 포용이 살아 숨 쉬는 사회 구축”*)
 
-* **Description**: Technology is not merely an efficiency lever—it is a powerful tool to address complex social and environmental challenges. This theme encourages applying data analytics, artificial intelligence, digital applications, and cross-disciplinary skills to deliver innovative, feasible, and public-value-generating sustainability solutions.
-* **Key Focus Issues**:
-  * AI, data analytics, and digital tool applications
-  * Smart campus systems, IoT-enabled living labs, and service workflow optimization
-  * Digital governance, open data transparency, and evidence-based decision support
-  * Industrial innovation, green transformation, and clean-tech enablement
-  * Disaster preparedness, climate resilience governance, and risk early warning
-* **Illustrative Proposal Ideas**:
-  * Utilizing data analysis to optimize campus energy loads, transit routes, or facility utilization
-  * Engineering digital platforms/apps supporting mental wellness, education, or accessibility
-  * Establishing unified campus issue reporting, resource coordination, and decision dashboards
-  * Implementing sensor networks, computer vision, or automation to monitor and solve environmental hazards
+* **공식 정의 (Description)**:
+  * **원문**: 每個人的背景、能力與需求都不盡相同。本主軸關注不同群體在教育、生活與社會參與中面臨的限制，鼓勵透過制度改善、服務創新與跨群體合作，創造更友善、更平等，也更能彼此理解的環境。
+  * **국문 정밀 번역**: 사람마다 배경, 역량, 필요(needs)가 모두 다릅니다. 본 주축은 다양한 사회적 집단이 교육, 일상생활, 사회 참여 과정에서 마주하는 구조적 제약에 주목하며, 제도 개선, 서비스 혁신, 집단 간 협력을 통해 더욱 친화적이고 평등하며 상호 이해를 높이는 환경을 조성하도록 독려합니다.
+* **핵심 초점 이슈 5개 (Key Focus Issues)**:
+  1. **教育平權、學習支持與資源可近性**: **교육 형평성(Educational Equity)**, 맞춤형 학습 지원 및 자원 접근성 *(※ 단순한 일괄 기계적 평등 Equality가 아닌, 소외·취약 계층의 특성에 맞춘 차등적 지원 Equity를 의미)*
+  2. **身心障礙、友善環境與無障礙參與**: 장애인 권익 보호, 친화적 배리어프리(무장애) 환경 및 사회 참여 보장
+  3. **高齡、兒少、弱勢及多元族群支持**: 고령층, 아동·청소년, 경제적 취약계층 및 다문화·소수민족 지원
+  4. **心理健康、情緒支持與社會連結**: 정신건강(Mental Health), 정서적 지지망 및 사회적 연대 구축
+  5. **性別平等、多元文化與跨世代共融**: 성평등(Gender Equality), 다문화 공존 및 세대 간 융합·상생
+* **실행 예시 4개 (Illustrative Action Examples)**:
+  1. **改善不同學習需求者的課程、資訊或校園服務**: 다양한 학습 요구(특수교육, 외국인 유학생 등)를 가진 이들을 위한 커리큘럼, 정보 체계 및 캠퍼스 행정 서비스 개선
+  2. **設計促進高齡者、兒少或弱勢群體參與的支持方案**: 고령자, 아동, 취약계층의 주체적 참여를 촉진하는 복지 및 교육 지원 프로그램 설계
+  3. **建立校園心理健康、同儕支持或社會連結機制**: 교내 멘탈헬스 케어, 또래 상담/동료 지지(Peer Support) 및 고립 방지 연결 메커니즘 구축
+  4. **透過跨世代或跨文化活動減少偏見並促進理解**: 세대 간 또는 다문화 교류 프로그램을 통해 사회적 편견을 해소하고 상호 존중과 공감 증진
+
+---
+
+### Theme 03: 智慧創新 (Smart Innovation / 스마트 혁신)
+> **부제**: 科技驅動永續轉型 (*“기술로 견인하는 지속가능 전환”*)
+
+* **공식 정의 (Description)**:
+  * **원문**: 科技不只是提升效率的工具，也能成為回應社會與環境問題的力量。本主軸鼓勵運用數據、人工智慧、數位工具與跨域專業，提出兼具創新性、可行性與公共價值的永續解方。
+  * **국문 정밀 번역**: 기술은 단순히 효율성을 높이는 도구에 그치지 않고, 사회 및 환경 문제를 해결하는 강력한 원동력이 될 수 있습니다. 본 주축은 데이터, 인공지능(AI), 디지털 도구 및 융합 전문성을 활용하여 혁신성, 실행 가능성, 공공 가치를 두루 갖춘 지속가능한 솔루션을 제안하도록 독려합니다.
+* **핵심 초점 이슈 5개 (Key Focus Issues)**:
+  1. **人工智慧、數據分析與數位工具應用**: 인공지능(AI), 데이터 분석 및 디지털 도구의 실무적 응용
+  2. **智慧校園、智慧場域與服務流程改善**: 스마트 캠퍼스, 스마트 생활 현장(Living Lab) 및 행정·복지 서비스 프로세스 혁신
+  3. **數位治理、資訊透明與決策支持**: 디지털 거버넌스, 데이터 투명성 공개 및 정책 의사결정 지원 체계
+  4. **產業創新、綠色轉型與永續科技**: 산업 혁신 모델, 비즈니스 녹색 전환 및 친환경 지속가능 기술 개발
+  5. **防災、韌性治理與風險預警**: 재난 방재, 기후 회복탄력성 거버넌스 및 위기 조기경보 시스템
+* **실행 예시 4개 (Illustrative Action Examples)**:
+  1. **運用數據分析改善校園能源、交通或空間使用**: 데이터 분석을 접목하여 교내 에너지 소비 효율화, 교통 혼잡 완화 또는 유휴 공간 활용 최적화
+  2. **開發協助學習、健康或生活支持的數位工具**: 학생 학습 보조, 심신 건강 관리 또는 일상생활 편의를 돕는 디지털 툴/모바일 웹앱 개발
+  3. **建立校園問題通報、資訊整合或決策支援平台**: 교내 불편사항 신고, 자원 정보 통합 아카이빙 또는 의사결정 지원 플랫폼 구축
+  4. **運用感測、人工智慧或自動化技術回應永續問題**: IoT 센서, 머신러닝/컴퓨터 비전 또는 자동화 로보틱스를 결합한 환경·사회 문제 해결 솔루션 구현
 
 ---
 
@@ -254,14 +266,16 @@ One Gold, one Silver, and one Bronze award are conferred in each track:
 
 ---
 
-## 8. Special GMBA Fast-Track: Master's Thesis Conversion (석사논문 변환 전략)
+## 8. [Optional Idea] GMBA Student Opportunity: Project-to-Thesis Conversion (참고: 석사논문 연계 아이디어)
 
-### 8.1 1석 3조(一石三鳥) 핵심 가치
-1. **논문 연구비 전액 지원 (NT$ 15,000 ~ 30,000)**: 설문조사, 인터뷰 사례비, 시제품 제작 비용을 학교 프로젝트 행동금으로 충당.
+> 💡 **참고 안내 (Notice & Disclaimer)**: 본 가이드는 GMBA 공식 학위 트랙이나 필수 교과과정이 아니며, 대회에 참여하는 GMBA 학생들이 대회 마일스톤과 행동 지원금(최대 30,000 NTD), 현장 데이터를 활용하여 **실무형 석사학위 논문(Applied Thesis)**으로 연계·발전시킬 수 있음을 보여주는 **선택적 학생 아이디어 및 실무 팁**입니다. 실제 학위 논문 진행 여부 및 연구 형식은 반드시 학생 개인의 지도교수와의 면담 및 학과 내규에 따라 최종 결정됩니다.
+
+### 8.1 1석 3조(一石三鳥) 기대 효과 (선택 시 이점)
+1. **논문 연구비 전액 지원 (NT$ 15,000 ~ 30,000)**: 설문조사, 인터뷰 사례비, 시제품 제작 비용을 학교 프로젝트 행동금으로 충당 가능.
 2. **현직 산업계 전문가 1:1 멘토링 (2회)**: 학술 논문의 취약점인 '실제 현장 적용성'을 외부 전문가 자문으로 검증.
 3. **석사 학위 + 교내 최고 권위의 지속가능성 어워드 동시 달성**: 최대 NT$ 50,000 상금과 총장상/금상 수상 경력 확보.
 
-### 8.2 논문 목차(Chapter) 1:1 매핑표
+### 8.2 논문 목차(Chapter) 1:1 매핑 참고안
 | 석사 학위 논문 목차 (Master's Thesis Structure) | THU Impact Award 마일스톤 산출물 | 수행 시기 |
 | :--- | :--- | :--- |
 | **Chapter 1. 서론 (Introduction)**<br>• 연구 배경 및 문제 정의 | **대회 1단계: 報名計畫書 (Initial Proposal Form)**<br>• 캠퍼스/사회적 페인포인트 관찰 및 기대 변화 | **11월 (지금!)** |
@@ -271,8 +285,8 @@ One Gold, one Silver, and one Bronze award are conferred in each track:
 | **Chapter 5. 비즈니스 모델 및 확장 (Scaling)**<br>• 지속가능성, 수익 모델, 제도화 방안 | **대회 7단계: 최종 성과물 완성**<br>• **[제안조] Action Blueprint** 또는 **[성과조] Impact Scheme** | **6월** |
 | **Chapter 6. 결론 및 정책 제언 (Conclusion)**<br>• 연구 시사점, 한계점 및 구술 심사 방어 | **대회 8단계: 決選 成果發表會 (Final Pitch Defense)**<br>• 10분 심사위원 피칭 요약 및 학위 구술 심사 | **7월 ~ 9월** |
 
-### 8.3 지도교수 면담 1분 피칭 스크립트
-> *"교수님, 이번 석사 논문은 동해대 공식 액셀러레이팅 프로그램(THU Impact Award)과 연계하여 학교로부터 공식 연구 행동금(최대 30,000 NTD)을 지원받고, 산업계 멘토링을 접목한 실무형 논문(Applied Thesis)으로 진행하고자 합니다. 6월까지 초안을 완성하고 9월 결선에서 학교 공식 수상 실적을 함께 안겨드리겠습니다."*
+### 8.3 지도교수 면담 1분 피칭 예시 스크립트
+> *"교수님, 이번 석사 논문은 동해대 공식 액셀러레이팅 프로그램(THU Impact Award)과 연계하여 학교로부터 공식 연구 행동금(최대 30,000 NTD)을 지원받고, 산업계 멘토링을 접목한 실무형 논문(Applied Thesis)으로 진행하고자 구상하고 있습니다. 6월까지 초안을 완성하고 9월 결선에서 학교 공식 수상 실적을 함께 안겨드리겠습니다."*
 
 ---
 

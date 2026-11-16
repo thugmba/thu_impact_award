@@ -1,6 +1,6 @@
 # THU IMPACT AWARD 2026 (東海大學未來永續英雄行動者)
 
-> **Official Program Overview, Student Action Playbook & GMBA Master's Thesis Fast-Track**
+> **Official Program Overview, Student Action Playbook & GMBA Master's Thesis Conversion Guide (Optional Idea)**
 
 🌐 **GitHub Pages Live Site**: [https://thugmba.github.io/thu_impact_award/](https://thugmba.github.io/thu_impact_award/)  
 🔗 **Official Program Portal (東海大學報名官網)**: [https://ithu.tw/THUIMPACTAWARD](https://ithu.tw/THUIMPACTAWARD)  
@@ -24,7 +24,7 @@ The **THU IMPACT AWARD** (東海大學未來永續英雄行動者) is an institu
 1. **[Live GitHub Pages Web Portal](https://thugmba.github.io/thu_impact_award/)**:
    * Interactive 4-Pillar overview & 3 Focus Themes (*Green Coexistence, Inclusive Future, Smart Innovation*).
    * 3-Phase Infographic Timeline & 5-Step Student Action Pipeline.
-   * Special **GMBA Master's Thesis Fast-Track Strategy** with 1:1 chapter conversion mapping.
+   * Optional **GMBA Master's Thesis Conversion Guide** showing how students can turn project deliverables into an applied thesis.
    * 6 Crucial Cautions to avoid administrative or funding disqualification.
 
 2. **[Executive 10-Slide Deck (PDF)](THU_IMPACT_AWARD_Overview_Deck.pdf)**:
