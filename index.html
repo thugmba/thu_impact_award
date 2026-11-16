@@ -596,47 +596,6 @@
       font-weight: 700;
     }
 
-    /* PDF Deck Gallery */
-    .preview-gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-      gap: 1.25rem;
-      margin: 1.5rem 0;
-    }
-
-    .preview-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      overflow: hidden;
-      box-shadow: var(--shadow-sm);
-      text-decoration: none;
-      color: inherit;
-      transition: transform 0.15s, box-shadow 0.15s;
-    }
-
-    .preview-card:hover {
-      transform: translateY(-3px);
-      box-shadow: var(--shadow-md);
-    }
-
-    .preview-card img {
-      width: 100%;
-      height: auto;
-      display: block;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .preview-card-caption {
-      padding: 0.75rem 1rem;
-      font-size: 0.85rem;
-      font-weight: 600;
-      color: var(--primary);
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-    }
-
     /* Footer */
     .footer {
       background: var(--primary);
@@ -1394,78 +1353,6 @@
     </div>
   </section>
 
-  <!-- Section 8: Slide Deck Gallery -->
-  <section class="container" style="background: #FFFFFF; border-top: 1px solid var(--border);">
-    <div class="section-header">
-      <div class="section-kicker">Deliverables & Downloads</div>
-      <h2 class="section-title">Official Overview Slide Deck (10-Slide PDF)</h2>
-      <p class="section-desc">
-        View the publication-grade executive presentation slide deck generated for the THU IMPACT AWARD.
-      </p>
-    </div>
-
-    <div style="margin-bottom: 2rem;">
-      <a href="THU_IMPACT_AWARD_Overview_Deck.pdf" class="btn btn-primary" target="_blank" style="font-size: 1rem; padding: 0.85rem 1.6rem;">
-        📥 Download Complete 10-Slide Deck (PDF)
-      </a>
-      <a href="PROGRAM_OVERVIEW.md" class="btn btn-secondary" style="margin-left: 0.75rem; color: var(--primary); border: 1px solid var(--border-dark);">
-        📄 View Raw Markdown (PROGRAM_OVERVIEW.md)
-      </a>
-    </div>
-
-    <div class="preview-gallery">
-      <a href="slide_preview-01.png" class="preview-card" target="_blank">
-        <img src="slide_preview-01.png" alt="Slide 1 Cover">
-        <div class="preview-card-caption">
-          <span>Slide 01 • Executive Cover</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-02.png" class="preview-card" target="_blank">
-        <img src="slide_preview-02.png" alt="Slide 2 Four Pillars">
-        <div class="preview-card-caption">
-          <span>Slide 02 • Strategic Architecture</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-03.png" class="preview-card" target="_blank">
-        <img src="slide_preview-03.png" alt="Slide 3 Application vs Final">
-        <div class="preview-card-caption">
-          <span>Slide 03 • Application Guidelines</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-07.png" class="preview-card" target="_blank">
-        <img src="slide_preview-07.png" alt="Slide 7 3-Phase Timeline">
-        <div class="preview-card-caption">
-          <span>Slide 07 • 3-Phase Infographic</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-08.png" class="preview-card" target="_blank">
-        <img src="slide_preview-08.png" alt="Slide 8 Student Pipeline">
-        <div class="preview-card-caption">
-          <span>Slide 08 • Student 5-Step Playbook</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-09.png" class="preview-card" target="_blank">
-        <img src="slide_preview-09.png" alt="Slide 9 GMBA Thesis Strategy">
-        <div class="preview-card-caption">
-          <span>Slide 09 • GMBA Thesis Guide (Optional)</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-      <a href="slide_preview-10.png" class="preview-card" target="_blank">
-        <img src="slide_preview-10.png" alt="Slide 10 Crucial Cautions">
-        <div class="preview-card-caption">
-          <span>Slide 10 • 6 Ground Rules</span>
-          <span class="badge badge-teal">View</span>
-        </div>
-      </a>
-    </div>
-  </section>
-
   <!-- Footer -->
   <footer class="footer">
     <div class="footer-container">
@@ -1473,8 +1360,10 @@
         <strong style="color: #FFFFFF;">Tunghai University Future Sustainability Hero Action Award (THU IMPACT AWARD)</strong><br>
         Office of Sustainability • Global MBA (GMBA) Initiative • <a href="https://ithu.tw/THUIMPACTAWARD" target="_blank" style="color: #2DD4BF;">Official Registration Portal (https://ithu.tw/THUIMPACTAWARD)</a>
       </div>
-      <div>
-        <a href="https://github.com/thugmba/thu_impact_award" target="_blank">GitHub Repository: thugmba/thu_impact_award</a>
+      <div style="display: flex; gap: 1.25rem; align-items: center;">
+        <a href="THU_IMPACT_AWARD_Overview_Deck.pdf" target="_blank" style="color: #38BDF8; font-weight: 600;">📄 Executive Deck (PDF)</a>
+        <a href="PROGRAM_OVERVIEW.md" style="color: #94A3B8;">📘 Overview (MD)</a>
+        <a href="https://github.com/thugmba/thu_impact_award" target="_blank" style="color: #94A3B8;">GitHub Repo</a>
       </div>
     </div>
   </footer>
