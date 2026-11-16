@@ -1,0 +1,1671 @@
+import weasyprint
+import subprocess
+
+html_content = """<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>THU IMPACT AWARD — Executive Overview Deck</title>
+<style>
+  @page {
+    size: 16in 9in;
+    margin: 0;
+  }
+
+  *, *::before, *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: "Liberation Sans", "Ubuntu Sans", "DejaVu Sans", "Droid Sans Fallback", sans-serif;
+    color: #0F172A;
+    background-color: #FFFFFF;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .slide {
+    width: 16in;
+    height: 9in;
+    page-break-after: always;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0.46in 0.8in 0.34in 0.8in;
+    position: relative;
+    overflow: hidden;
+    background: #FFFFFF;
+  }
+
+  /* Slide 1: Cover Dark Theme */
+  .slide.cover {
+    background: linear-gradient(135deg, #0A1128 0%, #101F42 60%, #0F2D4A 100%);
+    color: #FFFFFF;
+    justify-content: center;
+    padding: 1.1in 1.2in;
+  }
+
+  .cover-kicker {
+    display: inline-block;
+    padding: 7pt 16pt;
+    background: rgba(13, 148, 136, 0.2);
+    border: 1px solid #0D9488;
+    color: #2DD4BF;
+    font-size: 13pt;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 4pt;
+    margin-bottom: 22pt;
+  }
+
+  .cover-title {
+    font-size: 58pt;
+    font-weight: 800;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: 14pt;
+    color: #FFFFFF;
+  }
+
+  .cover-chinese-title {
+    font-size: 28pt;
+    font-weight: 600;
+    color: #94A3B8;
+    margin-bottom: 22pt;
+  }
+
+  .cover-tagline {
+    font-size: 19pt;
+    font-weight: 300;
+    line-height: 1.55;
+    color: #E2E8F0;
+    max-width: 11in;
+    margin-bottom: 38pt;
+    letter-spacing: -0.01em;
+  }
+
+  .cover-meta {
+    display: flex;
+    gap: 40pt;
+    font-size: 13.5pt;
+    color: #64748B;
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    padding-top: 18pt;
+  }
+  .cover-meta strong {
+    color: #E2E8F0;
+  }
+
+  /* Standard Slide Header */
+  .slide-header {
+    flex-shrink: 0;
+    margin-bottom: 0.14in;
+  }
+
+  .kicker-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 4pt;
+  }
+
+  .kicker {
+    font-size: 12pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    color: #0D9488;
+  }
+
+  .kicker-right {
+    font-size: 12pt;
+    font-weight: 600;
+    color: #94A3B8;
+    letter-spacing: 0.05em;
+  }
+
+  .slide-title {
+    font-size: 28pt;
+    font-weight: 800;
+    color: #0F172A;
+    line-height: 1.18;
+    letter-spacing: -0.01em;
+  }
+
+  .slide-subtitle {
+    font-size: 14pt;
+    color: #475569;
+    margin-top: 3pt;
+    line-height: 1.35;
+  }
+
+  /* Slide Body */
+  .slide-body {
+    flex: 1;
+    min-height: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  /* Slide Footer */
+  .slide-footer {
+    flex-shrink: 0;
+    height: 0.32in;
+    border-top: 1px solid #CBD5E1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 10.5pt;
+    color: #64748B;
+    margin-top: 0.08in;
+  }
+
+  /* Common Components */
+  .grid-2 {
+    display: flex;
+    gap: 0.28in;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .grid-3 {
+    display: flex;
+    gap: 0.24in;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .grid-4 {
+    display: flex;
+    gap: 0.20in;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .grid-5 {
+    display: flex;
+    gap: 0.16in;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .col {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .card {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 7pt;
+    padding: 12pt 14pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+  }
+
+  .card.highlight {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+  }
+
+  .card.featured {
+    background: #F0F9FF;
+    border: 1.5px solid #93C5FD;
+  }
+
+  .card.warning {
+    background: #FFFBEB;
+    border: 1.5px solid #FCD34D;
+  }
+
+  .card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 5pt;
+  }
+
+  .card-num {
+    font-size: 12.5pt;
+    font-weight: 800;
+    color: #0D9488;
+    letter-spacing: 0.05em;
+  }
+
+  .card-tag {
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2.5pt 6pt;
+    background: #E2E8F0;
+    color: #334155;
+    border-radius: 4pt;
+  }
+
+  .card-title {
+    font-size: 19.5pt;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 3pt;
+    line-height: 1.22;
+  }
+
+  .card-subtitle {
+    font-size: 12pt;
+    color: #64748B;
+    font-weight: 600;
+    margin-bottom: 6pt;
+  }
+
+  .card-desc {
+    font-size: 12pt;
+    color: #334155;
+    line-height: 1.38;
+    margin-bottom: 6pt;
+  }
+
+  .card-list {
+    list-style: none;
+    font-size: 12pt;
+    color: #334155;
+    line-height: 1.42;
+  }
+
+  .card-list li {
+    position: relative;
+    padding-left: 13pt;
+    margin-bottom: 4.5pt;
+  }
+
+  .card-list li::before {
+    content: "•";
+    position: absolute;
+    left: 0;
+    color: #0D9488;
+    font-weight: 800;
+    font-size: 14pt;
+    line-height: 0.9;
+  }
+
+  .card-stat {
+    margin-top: auto;
+    padding-top: 7pt;
+    border-top: 1px solid #E2E8F0;
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+
+  .card-stat-label {
+    font-size: 10pt;
+    font-weight: 600;
+    color: #64748B;
+    text-transform: uppercase;
+  }
+
+  .card-stat-value {
+    font-size: 19pt;
+    font-weight: 800;
+    color: #0F172A;
+  }
+
+  /* Custom Highlight Box */
+  .callout-banner {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 6pt;
+    padding: 7pt 13pt;
+    display: flex;
+    align-items: center;
+    gap: 12pt;
+    margin-bottom: 8pt;
+  }
+
+  .callout-badge {
+    background: #0F172A;
+    color: #FFFFFF;
+    font-size: 9.5pt;
+    font-weight: 700;
+    padding: 3pt 8pt;
+    border-radius: 4pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .callout-text {
+    font-size: 11.5pt;
+    color: #334155;
+    font-weight: 500;
+    line-height: 1.35;
+  }
+  .callout-text strong {
+    color: #0F172A;
+  }
+
+  /* Tables */
+  table.timeline-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10.5pt;
+    text-align: left;
+  }
+  
+  table.timeline-table th {
+    padding: 4.5pt 8pt;
+    font-size: 10.5pt;
+    background: #F1F5F9;
+    color: #0F172A;
+    font-weight: 700;
+    border-bottom: 2px solid #CBD5E1;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  table.timeline-table td {
+    padding: 4pt 8pt;
+    border-bottom: 1px solid #E2E8F0;
+    color: #334155;
+    vertical-align: middle;
+    line-height: 1.28;
+  }
+
+  table.deck-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 11pt;
+    text-align: left;
+  }
+
+  table.deck-table th {
+    background: #F1F5F9;
+    color: #0F172A;
+    font-weight: 700;
+    padding: 4.5pt 8pt;
+    border-bottom: 2px solid #CBD5E1;
+    font-size: 10.5pt;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  table.deck-table td {
+    padding: 4.5pt 8pt;
+    border-bottom: 1px solid #E2E8F0;
+    color: #334155;
+    vertical-align: top;
+    line-height: 1.3;
+  }
+
+  table.deck-table tr:last-child td {
+    border-bottom: none;
+  }
+
+  table.deck-table td strong {
+    color: #0F172A;
+  }
+
+  .badge {
+    display: inline-block;
+    padding: 2.5pt 6.5pt;
+    border-radius: 4pt;
+    font-size: 9.5pt;
+    font-weight: 700;
+    text-transform: uppercase;
+  }
+  .badge-teal { background: #CCFBF1; color: #0F766E; }
+  .badge-blue { background: #DBEAFE; color: #1D4ED8; }
+  .badge-amber { background: #FEF3C7; color: #B45309; }
+  .badge-red { background: #FEE2E2; color: #B91C1C; }
+  .badge-gray { background: #F1F5F9; color: #475569; }
+
+  .bottom-takeaway {
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 6pt;
+    padding: 7pt 14pt;
+    font-size: 11.5pt;
+    color: #334155;
+    margin-top: 6pt;
+    line-height: 1.35;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .bottom-takeaway strong { color: #0F172A; }
+
+  /* 3-Phase Infographic Timeline (Slide 7) */
+  .timeline-phases {
+    display: flex;
+    gap: 0.22in;
+    flex: 1;
+    min-height: 0;
+  }
+
+  .phase-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    background: #F8FAFC;
+    border: 1px solid #CBD5E1;
+    border-radius: 8pt;
+    padding: 10pt 12pt;
+    justify-content: space-between;
+  }
+
+  .phase-col.phase-1 { background: #FCFDFD; }
+  .phase-col.phase-2 { background: #F8FDFB; }
+  .phase-col.phase-3 { background: #F8FAFD; }
+
+  .phase-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 7pt;
+    padding-bottom: 4pt;
+    border-bottom: 1px solid #CBD5E1;
+  }
+
+  .phase-title {
+    font-size: 12pt;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+  .phase-1 .phase-title { color: #B45309; }
+  .phase-2 .phase-title { color: #0F766E; }
+  .phase-3 .phase-title { color: #1D4ED8; }
+
+  .milestone-step {
+    background: #FFFFFF;
+    border: 1px solid #E2E8F0;
+    border-radius: 6pt;
+    padding: 6.5pt 8pt;
+    margin-bottom: 5.5pt;
+  }
+
+  .milestone-step.highlight {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+  }
+
+  .milestone-step.featured {
+    background: #EFF6FF;
+    border: 1.5px solid #93C5FD;
+  }
+
+  .milestone-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2pt;
+  }
+
+  .milestone-num {
+    font-size: 9.5pt;
+    font-weight: 800;
+    color: #0D9488;
+  }
+
+  .milestone-name {
+    font-size: 11pt;
+    font-weight: 700;
+    color: #0F172A;
+    margin-bottom: 2pt;
+  }
+
+  .milestone-desc {
+    font-size: 9.8pt;
+    color: #475569;
+    line-height: 1.28;
+  }
+
+  /* 5-Step Horizontal Flow Infographic (Slide 8) */
+  .step-card {
+    flex: 1;
+    background: #FFFFFF;
+    border: 1px solid #CBD5E1;
+    border-radius: 7pt;
+    padding: 10pt 9pt;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+  }
+
+  .step-card.active {
+    background: #FFFBEB;
+    border: 1.5px solid #F59E0B;
+  }
+
+  .step-card.milestone {
+    background: #F0FDF4;
+    border: 1.5px solid #86EFAC;
+  }
+
+  .step-card.finale {
+    background: #EFF6FF;
+    border: 1.5px solid #3B82F6;
+  }
+
+  .step-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5pt;
+  }
+
+  .step-num {
+    font-size: 11pt;
+    font-weight: 800;
+    color: #0D9488;
+  }
+
+  .step-card.active .step-num { color: #B45309; }
+  .step-card.milestone .step-num { color: #047857; }
+  .step-card.finale .step-num { color: #1D4ED8; }
+
+  .step-title {
+    font-size: 12.5pt;
+    font-weight: 800;
+    color: #0F172A;
+    margin-bottom: 3pt;
+    line-height: 1.2;
+  }
+
+  .step-timing {
+    font-size: 9.5pt;
+    font-weight: 700;
+    color: #64748B;
+    margin-bottom: 6pt;
+  }
+
+  .step-desc {
+    font-size: 10pt;
+    color: #334155;
+    line-height: 1.35;
+    margin-bottom: 8pt;
+  }
+
+  .step-reward {
+    margin-top: auto;
+    padding-top: 6pt;
+    border-top: 1px solid #E2E8F0;
+    font-size: 9.5pt;
+    font-weight: 700;
+  }
+</style>
+</head>
+<body>
+
+<!-- SLIDE 1: COVER -->
+<div class="slide cover">
+  <div>
+    <div class="cover-kicker">Tunghai University Sustainability Initiative</div>
+    <div class="cover-title">THU IMPACT AWARD</div>
+    <div class="cover-chinese-title">東海大學未來永續英雄行動者 — Program Overview</div>
+    <div class="cover-tagline">
+      Transforming campus and community ideas into verified social impact through structured incubation, domain coaching, and direct action funding.
+    </div>
+  </div>
+  <div class="cover-meta">
+    <div><strong>Target Audience:</strong> Tunghai Undergrad, GMBA & Master's Students</div>
+    <div><strong>Application Window:</strong> Sep 21 – Nov 30, 2026 (12:00 PM)</div>
+    <div><strong>Official Portal:</strong> https://ithu.tw/THUIMPACTAWARD</div>
+    <div><strong>Total Funding Pool:</strong> NT$ 520,000 (Action Funds + Awards)</div>
+  </div>
+</div>
+
+<!-- SLIDE 2: 4 PILLARS OVERVIEW -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Strategic Architecture</span>
+      <span class="kicker-right">THU IMPACT AWARD 2026</span>
+    </div>
+    <div class="slide-title">Four Interconnected Pillars: From Problem Discovery to Real-World Impact</div>
+    <div class="slide-subtitle">A comprehensive framework designed to incubate and scale student, staff, and faculty action projects.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-4">
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">01</span>
+              <span class="card-tag">Pillar 1</span>
+            </div>
+            <div class="card-title">Action Themes</div>
+            <div class="card-subtitle">三大行動主軸</div>
+            <div class="card-desc">Aligning projects with urgent global and campus challenges:</div>
+            <ul class="card-list">
+              <li><strong>Green Coexistence:</strong> Climate & resource circularity</li>
+              <li><strong>Inclusive Future:</strong> Equity, disability & community</li>
+              <li><strong>Smart Innovation:</strong> AI, data & tech solutions</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Coverage</span>
+            <span class="card-stat-value">3 Themes</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">02</span>
+              <span class="card-tag">Pillar 2</span>
+            </div>
+            <div class="card-title">Participation</div>
+            <div class="card-subtitle">參與方式與組別</div>
+            <div class="card-desc">Selecting the appropriate track based on initiative maturity:</div>
+            <ul class="card-list">
+              <li><strong>Action Proposal Track:</strong> Ideation & 0-to-1 exploratory teams starting from scratch</li>
+              <li><strong>Practical Outcome Track:</strong> Ongoing initiatives seeking deeper impact</li>
+              <li>1–5 members per team</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Structure</span>
+            <span class="card-stat-value">2 Tracks</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card highlight">
+          <div>
+            <div class="card-header">
+              <span class="card-num">03</span>
+              <span class="card-tag">Pillar 3</span>
+            </div>
+            <div class="card-title">Support & Fund</div>
+            <div class="card-subtitle">培力與專案行動金</div>
+            <div class="card-desc">End-to-end acceleration throughout the 9-month journey:</div>
+            <ul class="card-list">
+              <li>Design thinking workshops & prototyping</li>
+              <li>1-on-1 expert advisory sessions</li>
+              <li>Dedicated mentor coaching</li>
+              <li>Journey notes learning tracking</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Total Fund</span>
+            <span class="card-stat-value">NT$ 300K</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="col">
+        <div class="card featured">
+          <div>
+            <div class="card-header">
+              <span class="card-num">04</span>
+              <span class="card-tag">Pillar 4</span>
+            </div>
+            <div class="card-title">Review & Awards</div>
+            <div class="card-subtitle">評選與成果獎勵</div>
+            <div class="card-desc">Rigorous dual-stage evaluation recognizing real contributions:</div>
+            <ul class="card-list">
+              <li>Stage 1: Preliminary written review</li>
+              <li>Stage 2: Final in-person pitch defense</li>
+              <li>Gold, Silver, Bronze per track</li>
+              <li>Special collaboration & leadership honors</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Prize Pool</span>
+            <span class="card-stat-value">NT$ 220K</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway">
+      <span><strong>Core Operating Principle:</strong> The program does not expect finished projects up front; it acts as an incubator, providing guidance, funds, and feedback every step of the way.</span>
+      <span class="badge badge-teal">Incubation & Mentorship</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 02 | THU IMPACT AWARD Program Overview</span>
+    <span>Tunghai University Office of Sustainability</span>
+  </div>
+</div>
+
+<!-- SLIDE 3: SUBMISSION CLARIFICATION -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Application Protocol</span>
+      <span class="kicker-right">CRITICAL GUIDELINE</span>
+    </div>
+    <div class="slide-title">Initial Proposal vs. Final Report: What Is Required When?</div>
+    <div class="slide-subtitle">Common Misconception Busted: You do NOT need a completed report to apply. The final report is produced after 9 months of incubation.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="callout-banner">
+      <div class="callout-badge">Key Takeaway</div>
+      <div class="callout-text">
+        <strong>Do you submit a complete final report when registering? NO.</strong> You only submit a preliminary proposal (報名計畫書) outlining problem observations and early ideas. The final comprehensive outcome report (預期成果) is completed and submitted 9 months later for the final gala.
+      </div>
+    </div>
+
+    <div class="grid-2">
+      <!-- Registration Card -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-amber">Step 1 • Initial Application</span>
+              <span class="card-num">Sep 21 – Nov 30</span>
+            </div>
+            <div class="card-title">What You Submit at Registration</div>
+            <div class="card-subtitle">報名收件階段 • Initial Proposal Only</div>
+            <div class="card-desc">
+              Teams submit two standard documents (under 10MB each via the online portal):
+            </div>
+            <ul class="card-list">
+              <li><strong>1. Project Proposal Form (報名計畫書):</strong> Initial concept, problem observation, envisioned impact. (Finished proof or prototype is NOT required).</li>
+              <li><strong>2. Participation Affidavit (參賽切結書):</strong> Signed agreement uploaded as PDF.</li>
+              <li><strong>Required Depth:</strong> Early observation for Action Proposal; summary of existing pilot records for Practical Outcome.</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Initial Evaluation</span>
+            <span style="font-size: 13.5pt; font-weight: 700; color: #D97706;">Preliminary Written Review (Dec)</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Final Review Card -->
+      <div class="col">
+        <div class="card highlight">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-teal">Step 2 • Final Review</span>
+              <span class="card-num">September (Next Year)</span>
+            </div>
+            <div class="card-title">What You Submit at Final Review</div>
+            <div class="card-subtitle">決選與成果發表 • Completed Deliverables</div>
+            <div class="card-desc">
+              After 9 months of workshops, testing, and NT$ 15K–30K action funding, teams deliver:
+            </div>
+            <ul class="card-list">
+              <li><strong>Complete Final Outcome Report (預期成果):</strong>
+                <div style="padding-left: 6pt; margin-top: 3pt; font-size: 11.5pt; color: #047857; line-height: 1.35;">
+                  • <em>Proposal Track:</em> <strong>Action Blueprint (行動藍圖)</strong> with validated needs & prototype metrics.<br>
+                  • <em>Outcome Track:</em> <strong>Impact Outcome Scheme (影響力成果方案)</strong> with evidence of impact & scaling plan.
+                </div>
+              </li>
+              <li><strong>Final Pitch Deck & Live Defense:</strong> Presented before external expert jury.</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Final Evaluation</span>
+            <span style="font-size: 13.5pt; font-weight: 700; color: #059669;">Final In-Person Jury Defense</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway">
+      <span><strong>The Incubation Bridge:</strong> Between application and final review, teams receive dedicated mentors, prototyping support, and direct funding in two installments (1/3 upon initial selection; 2/3 upon milestone completion).</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 03 | THU IMPACT AWARD Program Overview</span>
+    <span>Application & Review Guidelines</span>
+  </div>
+</div>
+
+<!-- SLIDE 4: THREE ACTION THEMES -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Pillar 01: Focus Domains</span>
+      <span class="kicker-right">ACTION THEMES (三大行動主軸)</span>
+    </div>
+    <div class="slide-title">Three Action Themes Grounded in Campus & Community Realities</div>
+    <div class="slide-subtitle">Participants anchor their initiatives in one of three sustainability domains responding to critical contemporary challenges.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-3">
+      <!-- Theme 1 -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">01</span>
+              <span class="badge badge-teal">Nature & Climate</span>
+            </div>
+            <div class="card-title">Green Coexistence</div>
+            <div class="card-subtitle">綠色共生 • Toward Nature-Positive Living</div>
+            <div class="card-desc">
+              Balancing ecological conservation, resource circularity, and campus quality of life.
+            </div>
+            <div style="margin-bottom: 5pt; font-size: 11pt; font-weight: 700; color: #0F172A; text-transform: uppercase;">Key Focus Issues:</div>
+            <ul class="card-list" style="font-size: 11.5pt;">
+              <li>Climate action, energy savings & net-zero transition</li>
+              <li>Campus biodiversity & habitat conservation</li>
+              <li>Water, renewable energy & resource governance</li>
+              <li>Circular economy, plastic reduction & food waste</li>
+            </ul>
+            <div style="margin-top: 6pt; padding: 5pt 7pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 5pt; font-size: 10.5pt; color: #475569; line-height: 1.35;">
+              <strong>Example:</strong> Transforming underutilized campus green space into an interactive educational bio-habitat.
+            </div>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Theme Code</span>
+            <span class="card-stat-value">GREEN</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 2 -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">02</span>
+              <span class="badge badge-blue">Equity & Society</span>
+            </div>
+            <div class="card-title">Inclusive Future</div>
+            <div class="card-subtitle">共融未來 • Building an Empathetic Society</div>
+            <div class="card-desc">
+              Addressing social barriers through service innovation and institutional design.
+            </div>
+            <div style="margin-bottom: 5pt; font-size: 11pt; font-weight: 700; color: #0F172A; text-transform: uppercase;">Key Focus Issues:</div>
+            <ul class="card-list" style="font-size: 11.5pt;">
+              <li>Educational equity & learning accessibility</li>
+              <li>Disability barrier-free environments</li>
+              <li>Elderly, youth, and vulnerable population support</li>
+              <li>Campus mental health & peer connection networks</li>
+            </ul>
+            <div style="margin-top: 6pt; padding: 5pt 7pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 5pt; font-size: 10.5pt; color: #475569; line-height: 1.35;">
+              <strong>Example:</strong> Designing peer emotional support systems and barrier-free digital course materials.
+            </div>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Theme Code</span>
+            <span class="card-stat-value">INCLUSIVE</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Theme 3 -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="card-num">03</span>
+              <span class="badge badge-amber">Tech & Governance</span>
+            </div>
+            <div class="card-title">Smart Innovation</div>
+            <div class="card-subtitle">智慧創新 • Technology-Driven Transition</div>
+            <div class="card-desc">
+              Leveraging data analytics and AI to deliver scalable public-value solutions.
+            </div>
+            <div style="margin-bottom: 5pt; font-size: 11pt; font-weight: 700; color: #0F172A; text-transform: uppercase;">Key Focus Issues:</div>
+            <ul class="card-list" style="font-size: 11.5pt;">
+              <li>AI, big data & smart software applications</li>
+              <li>Smart campus facilities & service optimization</li>
+              <li>Open data transparency & decision dashboards</li>
+              <li>Disaster resilience, risk monitoring & early warning</li>
+            </ul>
+            <div style="margin-top: 6pt; padding: 5pt 7pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 5pt; font-size: 10.5pt; color: #475569; line-height: 1.35;">
+              <strong>Example:</strong> Developing an AI campus shuttle and energy-demand prediction dashboard to cut emissions.
+            </div>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Theme Code</span>
+            <span class="card-stat-value">SMART</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway">
+      <span><strong>Flexibility Principle:</strong> Proposals are not confined to provided examples; any initiative that clearly defines the problem, target audience, and expected positive change is welcomed.</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 04 | THU IMPACT AWARD Program Overview</span>
+    <span>Theme Definitions & Proposal Guidelines</span>
+  </div>
+</div>
+
+<!-- SLIDE 5: PARTICIPATION TRACKS & ELIGIBILITY -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Pillar 02: Participation Structure</span>
+      <span class="kicker-right">TRACKS & ELIGIBILITY</span>
+    </div>
+    <div class="slide-title">Two Distinct Tracks Tailored to Your Project Maturity</div>
+    <div class="slide-subtitle">Choose Track A if you are exploring an idea, or Track B if you already have initial execution data.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <!-- Track A -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-blue">Category 01 • Ideation Phase</span>
+              <span class="card-num">Up to NT$ 65,000</span>
+            </div>
+            <div class="card-title">Action Proposal Track</div>
+            <div class="card-subtitle">行動提案組 • “From Zero to One: Exploring & Testing”</div>
+            <div class="card-desc">
+              For teams that have identified a critical problem and possess an early idea, but have not yet executed or validated their solution in the field.
+            </div>
+
+            <table class="deck-table" style="margin-top: 4pt;">
+              <tr>
+                <td style="width: 30%;"><strong>At Signup</strong></td>
+                <td>Problem observation, preliminary concept, envisioned impact.</td>
+              </tr>
+              <tr>
+                <td><strong>Journey Focus</strong></td>
+                <td>Problem framing, stakeholder field interviews, prototyping & iteration.</td>
+              </tr>
+              <tr>
+                <td><strong>Final Output</strong></td>
+                <td><strong>Action Blueprint (行動藍圖):</strong> Validated needs, prototype tests & metrics.</td>
+              </tr>
+              <tr>
+                <td><strong>Funding</strong></td>
+                <td>NT$ 15,000 Action Fund + up to NT$ 30,000 Gold Award.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Best Suited For</span>
+            <span style="font-size: 12.5pt; font-weight: 700; color: #1D4ED8;">New Concepts, Emerging Teams & Explorations</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Track B -->
+      <div class="col">
+        <div class="card highlight">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-teal">Category 02 • Execution Phase</span>
+              <span class="card-num">Up to NT$ 100,000</span>
+            </div>
+            <div class="card-title">Practical Outcome Track</div>
+            <div class="card-subtitle">實踐成果組 • “Deepening & Scaling Existing Work”</div>
+            <div class="card-desc">
+              For teams already executing initiatives with preliminary service records, data, or partnerships, seeking to consolidate evidence and amplify impact.
+            </div>
+
+            <table class="deck-table" style="margin-top: 4pt;">
+              <tr>
+                <td style="width: 30%;"><strong>At Signup</strong></td>
+                <td>Execution records, initial results, and verified field experience.</td>
+              </tr>
+              <tr>
+                <td><strong>Journey Focus</strong></td>
+                <td>Objective audit, outcome synthesis, impact analysis & scaling roadmap.</td>
+              </tr>
+              <tr>
+                <td><strong>Final Output</strong></td>
+                <td><strong>Impact Outcome Scheme (影響力成果方案):</strong> Verified impact & scaling plan.</td>
+              </tr>
+              <tr>
+                <td><strong>Funding</strong></td>
+                <td>NT$ 30,000 Action Fund + up to NT$ 50,000 Gold Award.</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Best Suited For</span>
+            <span style="font-size: 12.5pt; font-weight: 700; color: #059669;">Ongoing Projects, Established Clubs & Lab Pilots</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Eligibility Strip -->
+    <div style="background: #F1F5F9; border: 1px solid #CBD5E1; border-radius: 6pt; padding: 7pt 13pt; display: flex; justify-content: space-between; font-size: 11pt; color: #334155; margin-top: 6pt;">
+      <div><strong>Eligibility:</strong> Tunghai faculty, staff, and enrolled students.</div>
+      <div><strong>Team Size:</strong> 1 to 5 members (Solo allowed).</div>
+      <div><strong>External Partners:</strong> Welcome (do not count toward limit).</div>
+      <div><strong>Deadline:</strong> Nov 30, 2026 at 12:00 PM.</div>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 05 | THU IMPACT AWARD Program Overview</span>
+    <span>Tracks, Eligibility & Team Formation Rules</span>
+  </div>
+</div>
+
+<!-- SLIDE 6: SUPPORT & AWARDS -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Pillars 03 & 04: Resources & Recognition</span>
+      <span class="kicker-right">SUPPORT & AWARDS</span>
+    </div>
+    <div class="slide-title">Total Financial Pool: NT$ 300K Action Funds + NT$ 220K Prize Money</div>
+    <div class="slide-subtitle">Combining direct execution funding with institutional coaching and cash awards for excellence.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <!-- Support Column -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-teal">Pillar 03 • Support</span>
+              <span class="card-num">NT$ 300,000 Fund</span>
+            </div>
+            <div class="card-title">Capacity Building & Action Funds</div>
+            <div class="card-subtitle">4 Layers of Institutional Support</div>
+
+            <table class="deck-table" style="margin-top: 3pt;">
+              <tr>
+                <td style="width: 30%;"><strong>Workshops</strong></td>
+                <td>Design thinking, problem framing, agile prototyping, pitch logic.</td>
+              </tr>
+              <tr>
+                <td><strong>Advisory</strong></td>
+                <td>1-on-1 expert advisory sessions to troubleshoot project roadblocks.</td>
+              </tr>
+              <tr>
+                <td><strong>Mentorship</strong></td>
+                <td>Dedicated milestone coaches providing continuous review.</td>
+              </tr>
+              <tr>
+                <td><strong>Portfolio</strong></td>
+                <td>Journey Notes (旅程札記) documenting progress and reflections.</td>
+              </tr>
+            </table>
+
+            <div style="margin-top: 6pt; padding: 6pt 9pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 5pt; font-size: 10.5pt; line-height: 1.35;">
+              <strong>Action Fund Allocations (專案行動金):</strong><br>
+              • <strong>Proposal Track:</strong> NT$ 15,000 per team | <strong>Outcome Track:</strong> NT$ 30,000 per team<br>
+              <em>Disbursement:</em> 1/3 after initial selection; 2/3 after milestone tasks. Covers prototype tests & surveys.
+            </div>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Mentorship Period</span>
+            <span style="font-size: 12pt; font-weight: 700; color: #0F766E;">Dec 2026 – Jun 2027</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Awards Column -->
+      <div class="col">
+        <div class="card featured">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-blue">Pillar 04 • Recognition</span>
+              <span class="card-num">NT$ 220,000 Cash</span>
+            </div>
+            <div class="card-title">Review Criteria & Prize Structure</div>
+            <div class="card-subtitle">Comprehensive Performance Rewards</div>
+
+            <table class="deck-table" style="margin-top: 3pt;">
+              <thead>
+                <tr>
+                  <th>Award Tier</th>
+                  <th>Proposal Track</th>
+                  <th>Outcome Track</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><strong>Gold Award (金獎)</strong></td>
+                  <td><strong>NT$ 30,000</strong></td>
+                  <td><strong>NT$ 50,000</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Silver Award (銀獎)</strong></td>
+                  <td><strong>NT$ 20,000</strong></td>
+                  <td><strong>NT$ 40,000</strong></td>
+                </tr>
+                <tr>
+                  <td><strong>Bronze Award (銅獎)</strong></td>
+                  <td><strong>NT$ 10,000</strong></td>
+                  <td><strong>NT$ 30,000</strong></td>
+                </tr>
+              </tbody>
+            </table>
+
+            <div style="margin-top: 6pt; padding: 6pt 9pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 5pt; font-size: 10.5pt; line-height: 1.35;">
+              <strong>Two Special Recognition Awards (NT$ 10,000 each):</strong><br>
+              • <strong>Common Good Award (共好推動獎):</strong> 1 team/track honoring stellar collaboration.<br>
+              • <strong>President's Special Award (校長特別獎):</strong> 1 team/track honoring sustainability spirit.
+            </div>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Final Evaluation</span>
+            <span style="font-size: 12pt; font-weight: 700; color: #1D4ED8;">September 2027 Gala Defense</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway">
+      <span><strong>Evaluation Balance:</strong> Preliminary review focuses heavily on problem insight & approach (70%); final defense evaluates validated outcomes, prototype testing & demonstrated stakeholder change (70–80%).</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 06 | THU IMPACT AWARD Program Overview</span>
+    <span>Support Mechanisms & Prize Structure</span>
+  </div>
+</div>
+
+<!-- SLIDE 7: TIMELINE INFOGRAPHIC (Redesigned 3-Phase Roadmap) -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Execution Roadmap</span>
+      <span class="kicker-right">INFOGRAPHIC TIMELINE</span>
+    </div>
+    <div class="slide-title">8-Stage Program Journey from Application to Final Gala</div>
+    <div class="slide-subtitle">A high-impact, three-phase visual roadmap guiding selected teams from initial idea to university gala defense.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="timeline-phases">
+      <!-- Phase 1 Column -->
+      <div class="phase-col phase-1">
+        <div>
+          <div class="phase-header">
+            <span class="phase-title">Phase 1: Entry & Selection</span>
+            <span class="badge badge-amber">Nov – Dec</span>
+          </div>
+
+          <div class="milestone-step highlight">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 01</span>
+              <span class="badge badge-amber" style="font-size: 8.5pt;">Sep 21 – Nov 30</span>
+            </div>
+            <div class="milestone-name">Open Application (報名收件)</div>
+            <div class="milestone-desc">Form team (1–5 members), submit online <strong>Project Proposal Form</strong> by 12:00 PM. No finished proof required!</div>
+          </div>
+
+          <div class="milestone-step">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 02</span>
+              <span class="badge badge-gray" style="font-size: 8.5pt;">Oct 27</span>
+            </div>
+            <div class="milestone-name">Problem Discovery Workshop</div>
+            <div class="milestone-desc">Interactive session to explore real field needs across Green, Inclusive, and Smart domains.</div>
+          </div>
+
+          <div class="milestone-step highlight">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 03</span>
+              <span class="badge badge-teal" style="font-size: 8.5pt;">December</span>
+            </div>
+            <div class="milestone-name">Preliminary Selection (初選公佈)</div>
+            <div class="milestone-desc">Expert written review; announce selected teams and <strong>disburse Phase 1 Action Fund (1/3)</strong>.</div>
+          </div>
+        </div>
+
+        <div style="padding: 5pt 8pt; background: #FFFBEB; border-radius: 4pt; border: 1px solid #FCD34D; font-size: 9.5pt; color: #92400E; font-weight: 700; text-align: center;">
+          💰 Disburses NT$ 5K (Track A) / NT$ 10K (Track B)
+        </div>
+      </div>
+
+      <!-- Phase 2 Column -->
+      <div class="phase-col phase-2">
+        <div>
+          <div class="phase-header">
+            <span class="phase-title">Phase 2: Deep Incubation</span>
+            <span class="badge badge-teal">Jan – May</span>
+          </div>
+
+          <div class="milestone-step">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 04</span>
+              <span class="badge badge-gray" style="font-size: 8.5pt;">Dec – Jan</span>
+            </div>
+            <div class="milestone-name">Diagnostic Workshop & Advisory 1</div>
+            <div class="milestone-desc">Project diagnosis, stakeholder mapping, and 1st 1-on-1 expert advisory consultation.</div>
+          </div>
+
+          <div class="milestone-step">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 05</span>
+              <span class="badge badge-gray" style="font-size: 8.5pt;">Feb – Mar</span>
+            </div>
+            <div class="milestone-name">Prototype Showcase & Advisory 2</div>
+            <div class="milestone-desc">Exhibit lightweight action prototypes, gather community feedback, and 2nd 1-on-1 expert consultation.</div>
+          </div>
+
+          <div class="milestone-step highlight">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 06</span>
+              <span class="badge badge-teal" style="font-size: 8.5pt;">Apr – May</span>
+            </div>
+            <div class="milestone-name">Enhancement Workshop</div>
+            <div class="milestone-desc">Incorporate feedback, calibrate impact metrics, and <strong>disburse Phase 2 Action Fund (2/3)</strong>.</div>
+          </div>
+        </div>
+
+        <div style="padding: 5pt 8pt; background: #F0FDF4; border-radius: 4pt; border: 1px solid #86EFAC; font-size: 9.5pt; color: #065F46; font-weight: 700; text-align: center;">
+          💰 Disburses NT$ 10K (Track A) / NT$ 20K (Track B)
+        </div>
+      </div>
+
+      <!-- Phase 3 Column -->
+      <div class="phase-col phase-3">
+        <div>
+          <div class="phase-header">
+            <span class="phase-title">Phase 3: Harvest & Awards</span>
+            <span class="badge badge-blue">Jun – Sep</span>
+          </div>
+
+          <div class="milestone-step">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 07</span>
+              <span class="badge badge-gray" style="font-size: 8.5pt;">June</span>
+            </div>
+            <div class="milestone-name">Proposal Logic & Pitch Skills</div>
+            <div class="milestone-desc">Storytelling structure coaching, pitch deck finalization, and synthesis of final deliverables.</div>
+          </div>
+
+          <div class="milestone-step featured">
+            <div class="milestone-top">
+              <span class="milestone-num">STAGE 08</span>
+              <span class="badge badge-blue" style="font-size: 8.5pt;">September</span>
+            </div>
+            <div class="milestone-name">Final Gala & Awards (決選大會)</div>
+            <div class="milestone-desc">Submit <strong>Complete Final Report</strong>; deliver in-person pitch defense before jury; gala conferral ceremony.</div>
+          </div>
+        </div>
+
+        <div style="padding: 5pt 8pt; background: #EFF6FF; border-radius: 4pt; border: 1px solid #93C5FD; font-size: 9.5pt; color: #1E40AF; font-weight: 700; text-align: center;">
+          🏆 Cash Prizes Up to NT$ 50,000 + Honors
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway" style="margin-top: 6pt;">
+      <span><strong>Infographic Summary:</strong> Follow this structured 3-phase journey ➔ receive NT$ 15,000–30,000 in direct funds, get continuous 1-on-1 industry mentorship, and compete for NT$ 220,000 in grand awards.</span>
+      <span class="badge badge-amber">Registration Deadline: Nov 30 (12:00 PM)</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 07 | THU IMPACT AWARD Program Overview</span>
+    <span>3-Phase Visual Roadmap</span>
+  </div>
+</div>
+
+<!-- SLIDE 8: STUDENT ACTION INFOGRAPHIC (5-Step Horizontal Flow) -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Student Action Playbook</span>
+      <span class="kicker-right">INFOGRAPHIC CHECKLIST</span>
+    </div>
+    <div class="slide-title">Student Action Guide: 5 Clear Steps from Signup to Awards Gala</div>
+    <div class="slide-subtitle">A concise, visual step-by-step pipeline showing exactly what to do and what funding & benefits you unlock.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-5">
+      <!-- Step 1 -->
+      <div class="step-card active">
+        <div>
+          <div class="step-header">
+            <span class="step-num">STEP 01</span>
+            <span class="badge badge-amber">Now – Nov 30</span>
+          </div>
+          <div class="step-title">Team Signup</div>
+          <div class="step-timing">Deadline: Nov 30 (12:00 PM)</div>
+          <div class="step-desc">
+            Form team (1–5 members, solo allowed). Submit initial <strong>Project Proposal Form</strong> online.<br><br>
+            <em>⚠️ Only initial problem & ideas needed. No proof required!</em>
+          </div>
+        </div>
+        <div class="step-reward" style="color: #B45309;">
+          🎁 <strong>Outcome:</strong><br>Official Incubation Status
+        </div>
+      </div>
+
+      <!-- Step 2 -->
+      <div class="step-card">
+        <div>
+          <div class="step-header">
+            <span class="step-num">STEP 02</span>
+            <span class="badge badge-teal">December</span>
+          </div>
+          <div class="step-title">Initial Selection</div>
+          <div class="step-timing">Phase 1 Disbursement</div>
+          <div class="step-desc">
+            Pass the preliminary written jury review and attend official program orientation.
+          </div>
+        </div>
+        <div class="step-reward" style="color: #0F766E;">
+          💰 <strong>Benefit:</strong><br>NT$ 5,000 – NT$ 10,000 (1/3 Action Fund into bank)
+        </div>
+      </div>
+
+      <!-- Step 3 -->
+      <div class="step-card">
+        <div>
+          <div class="step-header">
+            <span class="step-num">STEP 03</span>
+            <span class="badge badge-blue">Jan – Mar</span>
+          </div>
+          <div class="step-title">Field Testing</div>
+          <div class="step-timing">Winter & Spring Term</div>
+          <div class="step-desc">
+            • <strong>[Proposal]:</strong> Build prototype & interview real users.<br>
+            • <strong>[Outcome]:</strong> Measure empirical data & metrics.<br>
+            • Attend two 1-on-1 expert advisory sessions.
+          </div>
+        </div>
+        <div class="step-reward" style="color: #1D4ED8;">
+          💡 <strong>Benefit:</strong><br>Free 1-on-1 Expert Advisory
+        </div>
+      </div>
+
+      <!-- Step 4 -->
+      <div class="step-card milestone">
+        <div>
+          <div class="step-header">
+            <span class="step-num">STEP 04</span>
+            <span class="badge badge-teal">Apr – May</span>
+          </div>
+          <div class="step-title">Milestone Review</div>
+          <div class="step-timing">Phase 2 Disbursement</div>
+          <div class="step-desc">
+            Incorporate mentor feedback and submit brief Journey Notes (旅程札記) documenting progress.
+          </div>
+        </div>
+        <div class="step-reward" style="color: #047857;">
+          💰 <strong>Benefit:</strong><br>NT$ 10,000 – NT$ 20,000 (2/3 Action Fund balance)
+        </div>
+      </div>
+
+      <!-- Step 5 -->
+      <div class="step-card finale">
+        <div>
+          <div class="step-header">
+            <span class="step-num">STEP 05</span>
+            <span class="badge badge-blue">Jun – Sep</span>
+          </div>
+          <div class="step-title">Grand Gala</div>
+          <div class="step-timing">Final Pitch Defense</div>
+          <div class="step-desc">
+            June: Pitching workshop.<br>
+            September: Submit Final Report & 10-minute live presentation before external jury.
+          </div>
+        </div>
+        <div class="step-reward" style="color: #1E40AF;">
+          🏆 <strong>Grand Prize:</strong><br>Gold Award NT$ 30K–50K + Official CV Honors
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway" style="margin-top: 6pt;">
+      <span><strong>Student Takeaway:</strong> Zero personal expense, low entry barrier, NT$ 15,000–30,000 in funded testing, and up to NT$ 50,000 cash prizes for graduation portfolios.</span>
+      <span class="badge badge-teal">100% Subsidized</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 08 | THU IMPACT AWARD Program Overview</span>
+    <span>5-Step Horizontal Action Pipeline</span>
+  </div>
+</div>
+
+<!-- SLIDE 9: GMBA THESIS CONVERSION STRATEGY (Overlap Completely Fixed) -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">GMBA Fast-Track Strategy</span>
+      <span class="kicker-right">MASTER'S THESIS & CAPSTONE CONVERSION</span>
+    </div>
+    <div class="slide-title">Leveraging THU Impact Award into a GMBA Master’s Thesis</div>
+    <div class="slide-subtitle">A seamless 1-to-1 blueprint converting competition incubation into an Applied Master's Thesis for September 2027 graduation.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-2">
+      <!-- Left: GMBA Value Proposition & Track Selection -->
+      <div class="col" style="flex: 1;">
+        <div class="card featured" style="padding: 10pt 12pt;">
+          <div>
+            <div class="card-header" style="margin-bottom: 3pt;">
+              <span class="badge badge-blue">Triple-Win Opportunity</span>
+              <span class="card-num">GMBA Special</span>
+            </div>
+            <div class="card-title" style="font-size: 16.5pt; margin-bottom: 2pt;">Why GMBA Students Should Join</div>
+            <div class="card-subtitle" style="margin-bottom: 5pt; font-size: 11pt;">One Effort, Three Tangible Outcomes (一石三鳥)</div>
+
+            <ul class="card-list" style="font-size: 11pt; line-height: 1.35;">
+              <li><strong>1. Non-Reimbursable Thesis Budget:</strong> Fund user surveys, field tests, and prototypes using <strong>NT$ 15,000 – 30,000 Action Funds</strong>.</li>
+              <li><strong>2. Free 1-on-1 Industry Mentorship:</strong> Bolster academic rigor with real-world validation through two expert advisory sessions.</li>
+              <li><strong>3. Graduate with Honors on CV:</strong> Conclude your MBA with an academic degree PLUS official University Sustainability Awards (up to <strong>NT$ 50,000 cash</strong>).</li>
+            </ul>
+
+            <div style="margin-top: 6pt; padding: 5pt 8pt; background: #FFFFFF; border: 1px solid #CBD5E1; border-radius: 4pt; font-size: 10.5pt; line-height: 1.3;">
+              <strong>Choose Your Thesis Archetype:</strong><br>
+              • <strong>Track A (Proposal Track):</strong> <em>Startup Business Plan / ESG Feasibility Study</em><br>
+              • <strong>Track B (Outcome Track):</strong> <em>Corporate ESG Impact Assessment / Scaling Study</em>
+            </div>
+          </div>
+
+          <div style="margin-top: 5pt; padding: 4.5pt 8pt; background: #FEF3C7; border: 1px solid #FCD34D; border-radius: 4pt; font-size: 10pt; color: #92400E; line-height: 1.3;">
+            <strong>Advisor Pitch:</strong> <em>“Professor, this thesis is embedded in THU Impact Award, securing university funding and field data to guarantee practical rigor.”</em>
+          </div>
+        </div>
+      </div>
+
+      <!-- Right: Chapter-by-Chapter Thesis Mapping Table -->
+      <div class="col" style="flex: 1.15;">
+        <div class="card highlight" style="padding: 10pt 12pt;">
+          <div>
+            <div class="card-header" style="margin-bottom: 3pt;">
+              <span class="badge badge-teal">Academic Alignment</span>
+              <span class="card-num">1:1 Mapping</span>
+            </div>
+            <div class="card-title" style="font-size: 16.5pt; margin-bottom: 2pt;">Thesis Chapter Conversion Architecture</div>
+            <div class="card-subtitle" style="margin-bottom: 4pt; font-size: 11pt;">How Program Milestones Fulfill Master’s Thesis Requirements</div>
+
+            <table class="deck-table" style="font-size: 9.8pt; width: 100%;">
+              <thead>
+                <tr>
+                  <th style="width: 44%; padding: 3pt 6pt;">Thesis Chapter</th>
+                  <th style="padding: 3pt 6pt;">Impact Award Milestone</th>
+                  <th style="width: 16%; padding: 3pt 6pt; text-align: right;">Timing</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 1. Introduction:</strong> Problem Framing</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Initial Proposal Form</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-amber">Nov</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 2. Literature:</strong> ESG Benchmarks</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Discovery Workshop Analysis</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-gray">Dec–Jan</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 3. Methodology:</strong> Stakeholders</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Diagnostic Advisory 1 & Interviews</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-gray">Jan–Feb</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 4. Validation:</strong> Field Test Data</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Prototype Testing & Advisory 2</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-gray">Mar–May</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 5. Business Scaling:</strong> Blueprint</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Action Blueprint / Impact Scheme</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-teal">June</span></td>
+                </tr>
+                <tr>
+                  <td style="padding: 3.5pt 6pt;"><strong>Ch 6. Conclusion:</strong> Oral Defense</td>
+                  <td style="padding: 3.5pt 6pt; color: #047857;">Outcome Gala Jury Pitch Defense</td>
+                  <td style="padding: 3.5pt 6pt; text-align: right;"><span class="badge badge-teal">Sep 2027</span></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+          <div class="card-stat" style="margin-top: 6pt; padding-top: 5pt;">
+            <span class="card-stat-label">Graduation Target</span>
+            <span style="font-size: 11pt; font-weight: 800; color: #047857;">Thesis Completed by July 2027</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway" style="margin-top: 6pt;">
+      <span><strong>Immediate Next Step:</strong> Submit your 1-page Project Proposal Form at <strong>https://ithu.tw/THUIMPACTAWARD</strong> before Nov 30 at 12:00 PM.</span>
+      <span class="badge badge-amber">Portal: ithu.tw/THUIMPACTAWARD</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 09 | THU IMPACT AWARD Program Overview</span>
+    <span>GMBA Master’s Thesis & Capstone Integration Guide</span>
+  </div>
+</div>
+
+<!-- SLIDE 10: CRUCIAL CAUTIONS & GROUND RULES -->
+<div class="slide">
+  <div class="slide-header">
+    <div class="kicker-row">
+      <span class="kicker">Compliance & Ground Rules</span>
+      <span class="kicker-right">CRITICAL CAUTIONS FOR APPLICANTS</span>
+    </div>
+    <div class="slide-title">Crucial Cautions: 6 Traps Every Participating Student Must Avoid</div>
+    <div class="slide-subtitle">Essential administrative, financial, and academic integrity rules to safeguard your funding and thesis progress.</div>
+  </div>
+
+  <div class="slide-body">
+    <div class="grid-3">
+      <!-- Card 1: Registration Cautions -->
+      <div class="col">
+        <div class="card warning">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-red">Hard Rule</span>
+              <span class="card-num" style="color: #B45309;">01 • Registration</span>
+            </div>
+            <div class="card-title" style="font-size: 17pt;">Registration & Team Rules</div>
+            <div class="card-subtitle">報名與團隊組成禁忌</div>
+
+            <ul class="card-list" style="font-size: 11pt;">
+              <li><strong>Strict 12:00 PM Noon Deadline:</strong> Application closes <strong>Nov 30 at 12:00 PM</strong> sharp (NOT midnight!). The system locks automatically.</li>
+              <li><strong>1 Team Representative Limit:</strong> You may join multiple teams, but you can only serve as <strong>Team Lead (代表)</strong> for ONE project.</li>
+              <li><strong>Signed Affidavit Mandatory:</strong> All members must sign the Participation Affidavit (參賽切結書) before PDF upload.</li>
+              <li><strong>Roster Locked After Deadline:</strong> Team members and track cannot be changed once submitted.</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Key Risk</span>
+            <span style="font-size: 11.5pt; font-weight: 700; color: #B45309;">Immediate Disqualification</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2: Action Funds Accountability -->
+      <div class="col">
+        <div class="card">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-amber">Financial</span>
+              <span class="card-num">02 • Funds & Tasks</span>
+            </div>
+            <div class="card-title" style="font-size: 17pt;">Funding Accountability</div>
+            <div class="card-subtitle">行動金核銷與里程碑約束</div>
+
+            <ul class="card-list" style="font-size: 11pt;">
+              <li><strong>Phase 2 Fund is Milestone-Gated:</strong> The remaining 2/3 (NT$ 10K–20K) is ONLY paid upon passing prototype reviews and submitting Journey Notes.</li>
+              <li><strong>Legitimate Expense Documentation:</strong> Funds must directly support prototypes, surveys, interviews, and test materials. Keep receipts!</li>
+              <li><strong>Mandatory 1-on-1 Advisories:</strong> Teams must attend the two expert consultations; skipping forfeited final jury defense eligibility.</li>
+              <li><strong>No "Ghost Teams":</strong> Regular checkpoint participation is audited by coaches.</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Key Risk</span>
+            <span style="font-size: 11.5pt; font-weight: 700; color: #D97706;">Forfeiture of 2nd Funding</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3: Master's Thesis Integrity -->
+      <div class="col">
+        <div class="card highlight">
+          <div>
+            <div class="card-header">
+              <span class="badge badge-teal">Academic</span>
+              <span class="card-num">03 • Thesis Integrity</span>
+            </div>
+            <div class="card-title" style="font-size: 17pt;">Academic Thesis Rules</div>
+            <div class="card-subtitle">GMBA 學位論文專屬注意事項</div>
+
+            <ul class="card-list" style="font-size: 11pt;">
+              <li><strong>Team vs. Individual Authorship:</strong> Competitions allow 1–5 members, but a Master's Thesis is an <strong>individual defense</strong>. If in a team, strictly delineate your independent analytical chapters.</li>
+              <li><strong>Early Advisor Agreement:</strong> Consult your thesis advisor by December to formally confirm an Applied Thesis / Capstone format.</li>
+              <li><strong>Ethics & Data Compliance:</strong> Ensure company data disclosure and user survey privacy conform to university research ethics.</li>
+              <li><strong>Dual-Track Deliverables:</strong> Format the final report as an academic thesis simultaneously.</li>
+            </ul>
+          </div>
+          <div class="card-stat">
+            <span class="card-stat-label">Key Risk</span>
+            <span style="font-size: 11.5pt; font-weight: 700; color: #047857;">Oral Defense Scrutiny</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-takeaway" style="margin-top: 6pt;">
+      <span><strong>Golden Rule for Students:</strong> "Submit by noon on Nov 30, keep receipts for milestone funding, and if writing an MBA thesis, define your individual contribution from Day 1."</span>
+      <span class="badge badge-blue">Compliance Checklist</span>
+    </div>
+  </div>
+
+  <div class="slide-footer">
+    <span>Slide 10 | THU IMPACT AWARD Program Overview</span>
+    <span>Crucial Cautions & Integrity Guidelines</span>
+  </div>
+</div>
+
+</body>
+</html>
+"""
+
+with open("deck.html", "w", encoding="utf-8") as f:
+    f.write(html_content)
+
+print("Saved deck.html. Now rendering to PDF...")
+doc = weasyprint.HTML(filename="deck.html")
+doc.write_pdf("THU_IMPACT_AWARD_Overview_Deck.pdf")
+print("Successfully generated THU_IMPACT_AWARD_Overview_Deck.pdf!")
+
+# Convert to images using pdftoppm to verify quality
+subprocess.run(["pdftoppm", "-png", "-r", "150", "THU_IMPACT_AWARD_Overview_Deck.pdf", "slide_preview"])
+print("Generated preview PNGs.")
