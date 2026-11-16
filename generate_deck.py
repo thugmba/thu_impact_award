@@ -1604,8 +1604,8 @@ html_content = """<!DOCTYPE html>
 
             <ul class="card-list" style="font-size: 11pt;">
               <li><strong>Phase 2 Fund is Milestone-Gated:</strong> The remaining 2/3 (NT$ 10K–20K) is ONLY paid upon passing prototype reviews and submitting Journey Notes.</li>
-              <li><strong>Legitimate Expense Documentation:</strong> Funds must directly support prototypes, surveys, interviews, and test materials. Keep receipts!</li>
-              <li><strong>Mandatory 1-on-1 Advisories:</strong> Teams must attend the two expert consultations; skipping forfeited final jury defense eligibility.</li>
+              <li><strong>No Receipt Reimbursement (`不另請團隊留單據核銷`):</strong> Paid directly to team representative; students are NOT required to submit receipts for reimbursement.</li>
+              <li><strong>Mandatory 1-on-1 Advisories:</strong> Teams must attend the two expert consultations; skipping forfeits final jury defense eligibility.</li>
               <li><strong>No "Ghost Teams":</strong> Regular checkpoint participation is audited by coaches.</li>
             </ul>
           </div>
@@ -1643,7 +1643,7 @@ html_content = """<!DOCTYPE html>
     </div>
 
     <div class="bottom-takeaway" style="margin-top: 6pt;">
-      <span><strong>Golden Rule for Students:</strong> "Submit by noon on Nov 30, keep receipts for milestone funding, and if writing an MBA thesis, define your individual contribution from Day 1."</span>
+      <span><strong>Golden Rule for Students:</strong> "Submit proposal by noon on Nov 30, achieve incubation milestones for direct funding, and present your impact with pride."</span>
       <span class="badge badge-blue">Compliance Checklist</span>
     </div>
   </div>

@@ -5,6 +5,7 @@
 🌐 **GitHub Pages Live Site**: [https://thugmba.github.io/thu_impact_award/](https://thugmba.github.io/thu_impact_award/)  
 🔗 **Official Program Portal (東海大學報名官網)**: [https://ithu.tw/THUIMPACTAWARD](https://ithu.tw/THUIMPACTAWARD)  
 📄 **Executive Slide Deck (PDF)**: [THU_IMPACT_AWARD_Overview_Deck.pdf](THU_IMPACT_AWARD_Overview_Deck.pdf)  
+📑 **Official Competition Regulations (東海大學活動簡章 PDF)**: [official_rules.pdf](official_rules.pdf)  
 📘 **Full Markdown Documentation**: [PROGRAM_OVERVIEW.md](PROGRAM_OVERVIEW.md)
 
 ---

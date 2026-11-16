@@ -167,9 +167,10 @@ The program provides four layers of institutional backing to help teams navigate
 * **Track Allocations**:
   * **Action Proposal Track**: **NT$ 15,000** per selected team
   * **Practical Outcome Track**: **NT$ 30,000** per selected team
-* **Two-Phase Disbursement**:
+* **Two-Phase Disbursement & Reimbursement Exemption**:
   * **Phase 1 (1/3)**: Disbursed immediately upon passing the preliminary written review.
   * **Phase 2 (2/3)**: Disbursed upon successful completion of required phase milestones.
+  * **No Receipts Required (`不另請團隊留單據核銷`)**: Paid directly to the designated Team Representative; the university does not require students to submit individual receipts for reimbursement.
 * **Eligible Expenditures**:
   * Prototype manufacturing, software/hardware testing, and iteration
   * Stakeholder field interviews, surveys, and focus group research
@@ -295,6 +296,26 @@ One Gold, one Silver, and one Bronze award are conferred in each track:
 1. **마감 시간 엄수 (Strict 12:00 PM Deadline)**: 2026년 11월 30일(월) **낮 12:00 정각 마감** (밤 12시 아님!). 포털 자동 차단되며 1분 지각도 접수 불가.
 2. **팀 대표 1인 1팀 제한 (Single Lead Rule)**: 팀원으로 여러 팀 참여는 가능하나, **공식 팀 대표(代表)는 오직 1개 팀에서만** 가능.
 3. **참가서약서(參賽切結書) 전원 서명 필수**: 팀원 전원 서명된 PDF 업로드 필수.
-4. **마감 후 팀 명단 수정 불가**: 11월 30일 접수 마감 후 팀원 추가/제외 및 트랙 변경 일체 불가.
-5. **2차 지원금(2/3 잔금) 마일스톤 연동**: 중간 여정 일지 및 프로토타입 참여를 완료해야 잔금(NT$ 10,000~20,000) 지급. 영수증 증빙 필수.
+4. **마감 후 팀 명단 수정 불가**: 11월 30일 접수 마감 후 팀원 추가/제외 및 트랙 변경 일체 불가 (원팀원 1인 이상 유지 시 지속 가능).
+5. **행동지원금 정산 면제 및 마일스톤 연동 (No Receipts Required)**: 행동지원금은 영수증을 학교에 일일이 제출하여 정산(核銷)받는 복잡한 방식이 아니라, 마일스톤(중간 여정 일지 및 프로토타입 참여) 완료 시 **팀 대표 계좌로 전액 현금 입금(`不另請團隊留單據核銷`)**됩니다.
 6. **GMBA 개인 논문과 팀 프로젝트 분리**: 대회는 1~5인 팀이지만, 학위 논문은 개인 단독 저작물이어야 하므로 본인의 고유 분석/설계 기여 챕터를 명확히 분리하여 작성.
+
+---
+
+## 10. International & GMBA Student Guide (외국인 유학생 및 GMBA를 위한 언어·발표 실무 가이드)
+
+### Q1. 계획서(보고서)를 영어로 작성해도 되나요?
+* **공식 규정**: 요강 제6조에 따라 제출 문서는 `中文書寫 (중국어 작성)`이 원칙입니다. 따라서 100% 영어로만 작성할 경우 서면 평가에서 형식 요건 미달 위험이 있습니다.
+* **공식 허용 해결책 (AI 도구 활용)**: 요강 제8조 (三)항에 따라 **생성형 AI(ChatGPT/Claude)를 활용한 텍스트 윤문(文字潤飾)이 공식 승인**되어 있습니다. 학생이 영어로 초안을 작성한 뒤 AI를 통해 고품질 대만 번체 중국어로 번역 및 윤문하고, 하단에 *"본 계획서의 중국어 번역 및 문장 윤문에는 ChatGPT를 활용하였습니다"*라고 명기하면 100% 정상 접수됩니다.
+* **팀 빌딩 전략**: 대만 현지 학생과 跨系所(타 학과 융합) 팀을 구성하여 중국어 서류 작성을 분담하는 방식을 가장 추천합니다.
+
+### Q2. 9월 결선 발표(10분 피칭)는 영어로 할 수 있나요?
+* **답변: 네, 100% 영어로 구두 발표가 가능합니다.**
+* **이유**: 동해대학교는 대만 교육부 지정 **이중언어 모범대학(雙語標竿大學)**이며, GMBA 과정은 전 과목 영어로 진행됩니다. 규정에 명시된 `中文書寫`는 슬라이드 파일(PPT/PDF)의 문서 텍스트 기준이며, **구두 발표 언어(Oral Speech)를 중국어로 제한하는 규정은 없습니다.**
+* **추천 발표 공식**:
+  1. **슬라이드 화면**: 핵심 제목, 헤드라인, 도표 요약은 중국어를 병기(Dual-Language)하여 심사위원의 시각적 이해를 돕습니다.
+  2. **구두 발표 (10분)**: 외국인 학생이 단상에서 당당하게 100% 영어로 피칭을 진행합니다.
+  3. **질의응답 (5분 Q&A)**: 혹시 심사위원이 중국어로 질문할 경우를 대비하여 대만인 팀원이 함께 무대에 올라 통역 및 보충 설명을 지원하도록 팀을 구성하면 다문화 협업 가산점을 받게 됩니다.
+
+### Q3. 프로젝트 결과물과 아이디어의 지식재산권(IP)은 누구 소유인가요?
+* **답변**: **100% 학생(참가팀) 소유**입니다 (요강 제7조 (一)-3 및 제8조 (八): `團隊提出之提案與成果，其智慧財產權歸團隊所有`). 학교는 지속가능성 홍보 및 교육적 목적의 전시 권한만 갖습니다.
